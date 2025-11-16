@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Interactive Site Plan</title>
+    <style>
+        /* make the SVG responsive and centered */
+        html,body { height:100%; margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial; }
+        .svg-wrapper { display:flex; align-items:center; justify-content:center; height:100%; background:#fafafa; padding:1rem; box-sizing:border-box; }
+        object, img, svg { width:100%; max-width:1400px; height:auto; display:block; }
+        /* optional: full-bleed view */
+        .full { width:100%; height:100%; object-fit:contain; }
+    </style>
+</head>
+<body>
+    <main class="svg-wrapper">
+        <!--
+            Replace "site-plan.svg" with the path to your SVG file.
+            Using <object> preserves interactivity & internal scripts in the SVG.
+            The <img> inside is fallback for browsers that don't support <object>.
+        -->
+        <object id="sitePlan" data="site-plan.svg" type="image/svg+xml" aria-label="Site plan">
+            <img src="site-plan.svg" alt="Site plan (SVG)" />
+        </object>
+    </main>
+
+    <!-- Optional: small script to handle errors (e.g., file not found) -->
+    <script>
+        const obj = document.getElementById('sitePlan');
+        obj.addEventListener('error', () => {
+            console.warn('Failed to load SVG:', obj.data);
+        });
+    </script>
+</body>
+</html>

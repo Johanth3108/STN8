@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>interactive site plan</title>
+    <style>
+     body {
+      margin: 0;
+      overflow: hidden;
+      background: black;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    /* :round_pushpin: Vertical header on LEFT */
+    header {
+      position: fixed;
+      top: 0.5%;
+      left: 3%;
+      transform: translateX(145%) rotate(0deg);
+      transform-origin: left center;
+      font-size: 24px;
+      font-weight: 600;
+      color: #00ffff;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 10px 20px;
+      border-right: 0px solid #00ffff;
+      letter-spacing: 3px;
+      text-shadow: 0 0 10px #00ffff;
+      z-index: 10;
+    }
+    #container {
+      width: 100vw;
+      height: 100vh;
+    }
+    .label {
+      position: absolute;
+      padding: 6px 10px;
+      background: rgba(0, 0, 0, 0.6);
+      color: white;
+      border: 1px solid #0ff;
+      border-radius: 6px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: 0.3s;
+      z-index: 5;
+      transform: rotate(0deg); /* bottom faces right */
+      transform-origin: bottom right;
+    }
+    .label:hover {
+      background: rgba(0, 255, 255, 0.9);
+      color: black;
+      transform: scale(1.1) rotate(0deg);
+    }
+    .glow {
+      box-shadow: 0 0 12px #00ffff, 0 0 24px #00ffff inset;
+      animation: pulseGlow 0.5s infinite alternate;
+    }
+    @keyframes pulseGlow {
+      from { box-shadow: 0 0 10px #00ffff; }
+      to { box-shadow: 0 0 25px #00ffff; }
+    }
+    .arrow-label {
+      position: absolute;
+      color: #fff200;
+      font-weight: bold;
+      text-shadow: 0 0 10px #000000;
+      font-size: 16px;
+      transform: translate(-55%, 80%) rotate(0deg);
+      z-index: 5;
+    }
+    #fade {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: black;
+      opacity: 0;
+      z-index: 50;
+      pointer-events: none;
+      transition: opacity 1.5s ease;
+    }
+    #buttons {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      z-index: 10;
+    }
+    button {
+      padding: 14px 20px;
+      border: none;
+      background: #333;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #00ffff;
+      color: black;
+    }
+    .label{
+      color: #000000;
+      font-size: 10px;
+      text-align: center;
+      cursor: pointer;
+      font-weight: normal;
+      background: rgba(255, 255, 255, 0.7);
+      padding: 4px 8px;
+      border-radius: 2px;
+      pointer-events: none;
+      white-space: nowrap;
+      transition: all 0.2s ease-in-out;
+      animation: pulseGlow 1.5s infinite alternate;
+
+    }
+    .label:hover {
+      background: #00ffff;
+      color: black;
+      transform: scale(1.1);
+    }
+
+    .marker-list {
+      margin-top: 5px;
+      background: rgba(0, 0, 0, 0.6);
+      color: white;
+      padding: 6px 10px;
+      border-radius: 5px;
+      text-align: left;
+      font-size: 12px;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      white-space: nowrap;
+      transition: opacity 0.3s ease-in-out;
+    }
+    </style>
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@0.181.0/build/three.module.js",
+            "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.181.0/examples/jsm/"
+        }
+    }
+    </script>
+  </head>
+  <body>
+    <header>STN8 Site Map</header>
+    <div id="container" style="position: relative; width: 100vw; height: 100vh; overflow: hidden;"></div>
+    <!-- 7 labels -->
+    <!-- <div id="label1" class="label ">CRets</div>
+    <div id="label2" class="label ">MHEs</div>
+    <div id="label3" class="label ">RME cage</div>
+    <div id="label4" class="label ">Yard</div>
+    <div id="label5" class="label glow">North Hub</div>
+    <div id="label6" class="label glow">Car Park</div>
+    <div id="label7" class="label glow">South Hub</div>
+    <div id="label8" class="label glow">Canteen</div> -->
+
+    <div id="buttons">
+      <button class="glow " data-category="toilets">Toilets</button>
+      <button class="glow " data-category="offices">Offices</button>
+      <button class="glow " data-category="canteen">Canteen</button>
+      <button class="glow " data-category="teams">Teams</button>
+      <button class="glow " data-category="meeting">Meeting Rooms</button>
+    </div>
+
+    <script type="module" src="/three.js"></script>
+
+    <div id="arrowText" class="arrow-label">You Are Here!</div>
+  </body>
+</html>
