@@ -473,7 +473,7 @@ function updateArrowText() {
 }
 // Return camera to home after move
 function returnHome() {
-  isReturningHome = false;
+  isReturningHome = true;
 }
 function animateReturnHome() {
   const lerpFactor = 0.05;
@@ -610,4 +610,5 @@ function createMarker(labelTitle, position, listItems=[]) {
   }, 500);
   return group;
 }
+
 
